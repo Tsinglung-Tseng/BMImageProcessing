@@ -93,9 +93,9 @@ class ConvertFeetMeters(ttk.Frame):
         self.calculateButton = ttk.Button(
             self, text="Calculate", command=self.convert_feet_to_meters
         ).grid(row=2, column=2, sticky=(S, E))
-        self.quitButton = ttk.Button(self, text="Quit", command=window.destroy).grid(
-            row=2, column=1, sticky=(S, E)
-        )
+        # self.quitButton = ttk.Button(self, text="Quit", command=window.destroy).grid(
+        #     row=2, column=1, sticky=(S, E)
+        # )
 
     def convert_feet_to_meters(self):
         """Converts feet to meters, uses string vars and converts them to floats"""
