@@ -19,3 +19,7 @@ class SHOW:
     ORIGIN = "./tmp_image/origin.png"
     HIST = "./tmp_image/hist.png"
     BINARY = "./tmp_image/binary.png"
+    FILTERED = "./tmp_image/filtered.png"
+
+class KERNEL:
+    pass
