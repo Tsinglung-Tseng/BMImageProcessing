@@ -18,10 +18,13 @@ class Otsu:
         self.total_variance = np.sum(np.square(self.gray_levels-self.total_mean)*self.P)
         self.class_frequency = [(np.sum(self.P[:T]), np.sum(self.P[T:])) for T in self.gray_levels]
     
-    def plot_hist(self):
+    def plot_hist(self, T=None):
         plt.figure()
         plt.plot(self.gray_levels, self.hist, label="hist")
-        plt.axvline(self.threshold(), color='k', ls='--')
+        if T is None:
+            plt.axvline(self.threshold(), color='k', ls='--')
+        else:
+            plt.axvline(T, color='k', ls='--')
         plt.title("Histogram")
         plt.xlabel("Gray Level")
         plt.ylabel("Count")
@@ -66,10 +69,15 @@ class Otsu:
     def threshold(self):
         return np.argmax([self.criterion_function(T) for T in self.gray_levels])
 
-    def __call__(self):
-        self.plot_hist()
-        self.show_origin_image()
-        self.show_binary_image()
+    def __call__(self, manual_T=None):
+        if manual_T is None:
+            self.plot_hist()
+            self.show_origin_image()
+            self.show_binary_image()
+        else:
+            self.plot_hist(manual_T)
+            self.show_origin_image()
+            self.show_binary_image(manual_T)
         
 
 class Entropy:
