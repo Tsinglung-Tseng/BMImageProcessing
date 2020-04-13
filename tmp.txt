@@ -1,5 +1,0 @@
-name: BMImageProcessing
-channels:
-  - defaults
-prefix: /Users/tsinglung/miniconda3/envs/BMImageProcessing
-
