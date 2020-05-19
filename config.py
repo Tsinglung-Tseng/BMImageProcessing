@@ -21,5 +21,6 @@ class SHOW:
     BINARY = "./tmp_image/binary.png"
     FILTERED = "./tmp_image/filtered.png"
 
+
 class KERNEL:
     pass

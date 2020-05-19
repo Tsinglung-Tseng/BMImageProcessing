@@ -51,7 +51,9 @@ class Binary(ttk.Frame):
         self.bt_otsu = Button(self, text="Otsu", width=22, command=self.run_otsu)
         self.bt_otsu.grid(row=4, column=1, sticky=W)
 
-        self.bt_entropy = Button(self, text="Entropy", width=22, command=self.run_entropy)
+        self.bt_entropy = Button(
+            self, text="Entropy", width=22, command=self.run_entropy
+        )
         self.bt_entropy.grid(row=5, column=1, sticky=W)
         self.show_img()
 
@@ -91,16 +93,16 @@ class Filtering(ttk.Frame):
     def __init__(self, window):
         ttk.Frame.__init__(self, window)
         self.grid()
-        self.create_widgets() 
-    
+        self.create_widgets()
+
     def create_widgets(self):
         self.working_image = None
-        
+
         def load_image(event):
             img_key = self.combobox_img.get()
             print(img_key)
             self.working_image = IMG.IO[img_key]
-            
+
         def load_kernel_direction(event):
             self.kernel_direction = self.combobox_direction.get()
             print(f"Load direction: {self.kernel_direction}")
@@ -108,7 +110,7 @@ class Filtering(ttk.Frame):
         def load_kernel_type(event):
             self.kernel_type = self.combobox_kernel_type.get()
             print(f"Load direction: {self.kernel_type}")
-            
+
         self.label_p = Label(self, text="Please select a picture.")
         self.label_p.grid(row=0, column=1, sticky=W)
 
@@ -119,18 +121,22 @@ class Filtering(ttk.Frame):
         self.label_d = Label(self, text="Please select direction.")
         self.label_d.grid(row=2, column=1, sticky=W)
 
-        self.combobox_direction = ttk.Combobox(self, values=['x', 'y'])
+        self.combobox_direction = ttk.Combobox(self, values=["x", "y"])
         self.combobox_direction.grid(row=3, column=1)
         self.combobox_direction.bind("<<ComboboxSelected>>", load_kernel_direction)
 
         self.label_t = Label(self, text="Please select filter type.")
         self.label_t.grid(row=4, column=1, sticky=W)
 
-        self.combobox_kernel_type = ttk.Combobox(self, values=['roberts', 'prewitt', 'sobel'])
+        self.combobox_kernel_type = ttk.Combobox(
+            self, values=["roberts", "prewitt", "sobel"]
+        )
         self.combobox_kernel_type.grid(row=5, column=1)
         self.combobox_kernel_type.bind("<<ComboboxSelected>>", load_kernel_type)
 
-        self.bt_hist = Button(self, text="Do Fitering", width=22, command=self.run_filtering)
+        self.bt_hist = Button(
+            self, text="Do Fitering", width=22, command=self.run_filtering
+        )
         self.bt_hist.grid(row=6, column=1, sticky=W)
 
     def run_filtering(self):
@@ -139,7 +145,7 @@ class Filtering(ttk.Frame):
 
         img = self.working_image()
         plt.figure()
-        plt.imshow(img, cmap='gray')
+        plt.imshow(img, cmap="gray")
         plt.title("Origin Image")
         plt.savefig(SHOW.ORIGIN)
 
@@ -147,7 +153,7 @@ class Filtering(ttk.Frame):
         print(self.kernel_direction)
         print(self.kernel_type)
         filtered_img = convolution(Image(img), Kernel())
-        plt.imshow(filtered_img, cmap='gray')
+        plt.imshow(filtered_img, cmap="gray")
         plt.title("Filtered Image")
         plt.savefig(SHOW.FILTERED)
         self.show_img()
@@ -162,7 +168,6 @@ class Filtering(ttk.Frame):
         self.filtered_label = Label(image=self.filtered)
         self.filtered_label.image = self.filtered
         self.filtered_label.grid(row=0, column=6, sticky=W)
-
 
 
 def main():
@@ -186,6 +191,7 @@ def main():
 
     # Main loop
     window.mainloop()
+
 
 if __name__ == "__main__":
     main()

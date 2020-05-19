@@ -46,7 +46,7 @@ class Kernel:
         return self.value[index[0] + 1][index[1] + 1]
 
 
-def convolution(img: Image, kernel: Image):
+def convolution(img: Image, kernel: Kernel):
 
     padded_img = img.padding(kernel.shape[0] // 2)
     result = np.zeros(img.shape)

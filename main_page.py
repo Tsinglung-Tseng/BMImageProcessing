@@ -26,5 +26,6 @@ def main():
     # Main loop
     window.mainloop()
 
+
 if __name__ == "__main__":
     main()
